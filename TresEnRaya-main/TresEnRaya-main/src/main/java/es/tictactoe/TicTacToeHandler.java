@@ -2,6 +2,8 @@ package es.tictactoe;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -41,7 +43,11 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 
 	private TicTacToeGame game;
 	private ConcurrentMap<WebSocketSession, Connection> connections = new ConcurrentHashMap<>();
-
+	private Map<String, String> imageMap = new HashMap<>();
+	{
+		imageMap.put("X", "croissant.png");
+        imageMap.put("O", "donuts.png");
+	}
 	public TicTacToeHandler() {
 		newGame();
 	}
@@ -98,14 +104,20 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 
 			case JOIN_GAME:
 				int numPlayers = game.getPlayers().size();
-				String letter = numPlayers == 0 ? "X" : "O";
+				String letter = numPlayers == 0 ? imageMap.get("X") : imageMap.get("O");
 				Player player = new Player(numPlayers + 1, letter, msg.data.name);
 				game.addPlayer(player);
 				break;
 
 			case MARK:
 				if (game.checkTurn(msg.data.playerId)) {
-					game.mark(msg.data.cellId);
+					boolean value = game.mark(msg.data.cellId);
+                    String imagePath = imageMap.get(value); // Get the path of the image for the value (either "X" or "O")
+                    ServerToClientMsg resultMsg = new ServerToClientMsg();
+                    resultMsg.action = EventType.MARK_RESULT;
+                    resultMsg.data = imagePath; // Send the path of the image instead of the value
+                    sendToAll(resultMsg);
+					
 				}
 				break;
 
@@ -122,8 +134,12 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 
 	
 
+	private void sendToAll(ServerToClientMsg resultMsg) {
+	}
+
 	private void showError(String jsonMsg, Exception e) {
 		System.err.println("Exception processing message: " + jsonMsg);
 		e.printStackTrace(System.err);
 	}
 }
+

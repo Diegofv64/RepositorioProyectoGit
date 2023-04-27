@@ -6,7 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class TicTacToeGame {
 
 	enum EventType {
-		JOIN_GAME, GAME_READY, MARK, SET_TURN, GAME_OVER, RESTART, RECONNECT
+		JOIN_GAME, GAME_READY, MARK, SET_TURN, GAME_OVER, RESTART, RECONNECT, MARK_RESULT
 	}
 
 	static class Cell {
