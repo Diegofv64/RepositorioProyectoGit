@@ -12,6 +12,7 @@
     font-weight: 400;
     src: local('Quicksand'), local('Quicksand'), url(Quicksand.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    color:  #c515ae;
 }
 
 ::selection {
@@ -19,7 +20,8 @@
 }
 
 body {
-    background: #A5DAD2;
+    background-image: url(fondo.gif);
+    background-size: 100%;
     font-family: Quicksand, san-serif;
 }
 
@@ -32,11 +34,11 @@ body {
 }
 
 .bgDark {
-    background: #516D66;
+    background:  #c515ae;
 }
 
 .colorDark {
-    color: #516D66;
+    color:  #c515ae;
 }
 
 .bgRed {
@@ -78,7 +80,7 @@ body {
 }
 
 .scoreBoard {
-    color: #516D66;
+    color: #c515ae;
     height: 100px;
 }
 
@@ -94,4 +96,8 @@ body {
 
 .scoreBoard span.active {
     border-bottom: 4px solid #F286A0;
+}
+
+#startBtn {
+    background-color:  #c515ae;
 }
