@@ -3,6 +3,8 @@ package es.tictactoe;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 import es.tictactoe.TicTacToeGame.Cell;
 
 public class Board {
@@ -31,7 +33,7 @@ public class Board {
 		return cells.get(cellId);
 	}
 
-	public int[] getCellsIfWinner(String label) {
+	public int[] getCellsIfWinner(String string) {
 		
 		int[][] winPositions = { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 },
 				{ 0, 4, 8 }, { 6, 4, 2 } };
@@ -40,7 +42,7 @@ public class Board {
 
 			String cellValue = this.cells.get(winPos[0]).value;
 			
-			if (cellValue != null && cellValue.equals(label)) {
+			if (cellValue != null && cellValue.equals(string)) {
 
 				boolean line = cellValue.equals(this.cells.get(winPos[1]).value)
 						&& cellValue.equals(this.cells.get(winPos[2]).value);

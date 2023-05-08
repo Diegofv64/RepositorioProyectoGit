@@ -1,5 +1,6 @@
 package es.tictactoe;
 
+
 public class Player {
 
 	private String label;

@@ -66,6 +66,9 @@ body {
 .gameCell {
     width: 181px;
     height: 181px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 .gameCell:not(.marked):hover {
