@@ -9,6 +9,7 @@ class Board {
         this.ready = false;   
         
         this.createTable();
+    
     }
 
     createTable() {
@@ -118,26 +119,51 @@ class Board {
         let cell = this.cells[cellId];
         cell.textContent = label;
         cell.classList.add('notActive');
-        cell.setAttribute('marked', 'true');
+
     }
 
     doWinner(winner, pos) {
-    	
-    	let looser;
-    	if(winner === this.players[0].name){
-    		looser = this.players[1].name;
-    	} else {
-    		looser = this.players[0].name;
-    	}
-    	
-    	alert(winner+" wins! "+looser+" looses.");
-    	
-    	this.disableAll();
+        let looser;
+        if(winner === this.players[0].name){
+            looser = this.players[1].name;
+        } else {
+            looser = this.players[0].name;
+        }
+    
+        let result = document.createElement("div"); // Crear un elemento div
+        result.style.backgroundColor = "#FFC0CB"; // Agregar un color de fondo pastel al elemento div
+        result.style.padding = "10px"; // Agregar un relleno al elemento div para separar el texto del borde
+        result.style.borderRadius = "10px"; // Agregar bordes redondeados al elemento div
+        result.style.position = "absolute"; // Posicionar el elemento div de manera absoluta
+        result.style.bottom = "0"; // Alinear el elemento div en la parte inferior de la página
+        result.style.left = "50%"; // Alinear el elemento div en el centro horizontal de la página
+        result.style.transform = "translateX(-50%)"; // Centrar horizontalmente el elemento div
+    
+        let p = document.createElement("p"); // Crear un elemento de párrafo para el resultado del juego
+        if (winner === "tie") {
+            p.textContent = "¡Kachaw! Los dos sois malísimos ¡Hay que mejorar!";
+        } else {
+            p.textContent = "¡Kachaw! " + winner + " le ha dado tremenda paliza a " + looser ;
+        }
+    
+        // Agregar estilos al elemento de párrafo
+        p.style.color = "#c515ae";
+        p.style.fontSize = "2em";
+        p.style.margin = "0"; // Eliminar el margen predeterminado del elemento de párrafo
+    
+        result.appendChild(p); // Agregar el elemento de párrafo al elemento div
+        document.body.appendChild(result); // Agregar el elemento div al cuerpo del documento
+    
+        this.disableAll();
         this.highlightCells(pos);
     }
+    
+    
+    
+    
 
     doDraw() {
-    	alert("Draw!");
+    	alert("Empate!");
         this.lowlightCells();
     }
 
@@ -189,4 +215,5 @@ class Board {
             cell.textContent = '';
         }    	
     }
+    
 }
