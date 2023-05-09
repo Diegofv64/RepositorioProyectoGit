@@ -101,3 +101,9 @@ body {
 #startBtn {
     background-color:  #c515ae;
 }
+#IMAGEN{
+    position:relative;
+    display: none;
+    bottom: 740px;
+    left:450px;
+}
