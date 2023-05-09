@@ -19,7 +19,10 @@ public class Connection {
 		this.session = session;
 	}
 
-	public void sendEvent(Event event) {
+	public Connection(WebSocket conn) {
+    }
+
+    public void sendEvent(Event event) {
 
 		ServerToClientMsg msg = new ServerToClientMsg();
 		msg.action = event.type;
