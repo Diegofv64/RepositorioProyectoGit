@@ -122,8 +122,9 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 
     
 
-    private void showError(String jsonMsg, Exception e) {
-        System.err.println("Exception processing message: " + jsonMsg);
-        e.printStackTrace(System.err);
-    }
+	private void showError(String jsonMsg, Exception e) {
+		System.err.println("Exception processing message: " + jsonMsg);
+		e.printStackTrace(System.err);
+	}
 }
+
