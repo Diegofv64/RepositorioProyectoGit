@@ -217,3 +217,24 @@ class Board {
     }
     
 }
+var seconds = 0; //número de segundos a contar
+function secondPassed() {
+
+  var minutes = Math.round((seconds - 30)/60); //calcula el número de minutos
+  var remainingSeconds = seconds % 60; //calcula los segundos
+  //si los segundos usan sólo un dígito, añadimos un cero a la izq
+  if (remainingSeconds < 10) { 
+    remainingSeconds = "0" + remainingSeconds; 
+  } 
+  document.getElementById('countdown').innerHTML = minutes + ":" +     remainingSeconds;  
+  seconds++;
+  var countFinish = setTimeout(reset, 120000);
+}
+var countdownTimer = setInterval(secondPassed, 1000);
+function reset(){
+    let img = document.getElementById("IMAGEN");
+    img.style.display= "block";
+}
+function borrarAlerta(){
+    clearTimeout(secondPassed);
+}
