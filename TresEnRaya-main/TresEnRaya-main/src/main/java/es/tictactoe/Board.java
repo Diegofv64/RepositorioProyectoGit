@@ -3,6 +3,7 @@ package es.tictactoe;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 
 import es.tictactoe.TicTacToeGame.Cell;
 

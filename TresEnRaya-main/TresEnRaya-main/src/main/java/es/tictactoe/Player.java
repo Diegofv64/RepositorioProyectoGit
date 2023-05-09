@@ -1,5 +1,6 @@
 package es.tictactoe;
 
+import javax.imageio.ImageIO;
 
 public class Player {
 
@@ -7,9 +8,9 @@ public class Player {
 	private String name;
 	private int id;
 
-	public Player(int id, String label, String name) {
+	public Player(int id, String letter, String name) {
 		this.id = id;
-		this.label = label;
+		this.label = letter;
 		this.name = name;
 	}
 

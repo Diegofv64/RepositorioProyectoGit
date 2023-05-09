@@ -3,7 +3,9 @@ package es.tictactoe;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.swing.ImageIcon;
+import javax.imageio.ImageIO;
+
+
 
 public class TicTacToeGame {
 
