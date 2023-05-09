@@ -68,6 +68,9 @@ body {
 .gameCell {
     width: 181px;
     height: 181px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 .gameCell:not(.marked):hover {
@@ -106,4 +109,8 @@ body {
     display: none;
     bottom: 740px;
     left:450px;
+}
+.reiniciar{
+    display: none;
+    
 }
