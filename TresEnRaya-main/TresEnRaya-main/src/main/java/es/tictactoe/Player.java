@@ -1,6 +1,5 @@
 package es.tictactoe;
 
-import javax.imageio.ImageIO;
 
 public class Player {
 
