@@ -19,9 +19,11 @@
 				</h1>
 			</div>
 
-			<button type="button" onclick="ToggleImage()" id="miBoton">
+			<button onclick="PlayAudio()" id="miBoton">
 				<img id="altavozImg" src="sonido.png" alt="Altavoz">
 			  </button>
+			  
+
 			  
 
 			<label id="countdown"></label>
@@ -60,7 +62,7 @@
 	<script src="/js/Board.js"></script>
 	<script src="/js/app.js"></script>
 
-	<audio loop id= "musica">
+	<audio loop id= "musica" controls>
 		<source src="song.mp3" type="audio/mpeg">
 	</audio> 
 	
