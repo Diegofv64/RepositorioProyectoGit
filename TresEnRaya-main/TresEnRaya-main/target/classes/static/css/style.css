@@ -101,7 +101,6 @@ body {
     border-bottom: 4px solid #F286A0;
 }
 
-
 #startBtn {
     background-color:  #c515ae;
 }
@@ -116,11 +115,11 @@ body {
     color:white;
     font-size:50px;
     position:relative;
-    right:29.5%;
+    left:30%;
 }
 #nickname{
     color:#c515ae;
-
+}
 .reiniciar{
     display: none;
     position: fixed;

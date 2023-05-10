@@ -245,6 +245,8 @@ var countdownTimer = setInterval(secondPassed, 1000);
 function reset(){
     let img = document.getElementById("IMAGEN");
     img.style.display= "block";
+    let count = document.getElementById("countdown");
+    count.style.display= "none";
 }
 function borrarAlerta(){
     clearTimeout(secondPassed);
