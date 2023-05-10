@@ -137,6 +137,9 @@ function start(){
 startBtn.addEventListener('click', event => {
     
 	var name = nameInput.value.trim();
+	let button = document.getElementById("reiniciar");
+	button.style.display = "block";
+	
 
     if (name.length > 0) {
         player.name = name;

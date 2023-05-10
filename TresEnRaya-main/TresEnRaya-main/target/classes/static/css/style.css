@@ -68,6 +68,9 @@ body {
 .gameCell {
     width: 181px;
     height: 181px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 .gameCell:not(.marked):hover {
@@ -98,6 +101,7 @@ body {
     border-bottom: 4px solid #F286A0;
 }
 
+
 #startBtn {
     background-color:  #c515ae;
 }
@@ -107,6 +111,7 @@ body {
     bottom: 740px;
     left:450px;
 }
+
 #countdown{
     color:white;
     font-size:50px;
@@ -115,4 +120,13 @@ body {
 }
 #nickname{
     color:#c515ae;
+
+.reiniciar{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 90%;
+    transform: translateX(-50%);
+    background-color: #c515ae;
+    color: white;
 }
