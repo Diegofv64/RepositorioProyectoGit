@@ -18,10 +18,7 @@ public class Connection {
 		this.json = json;
 		this.session = session;
 	}
-
-	public Connection(WebSocket conn) {
-    }
-
+	
     public void sendEvent(Event event) {
 
 		ServerToClientMsg msg = new ServerToClientMsg();

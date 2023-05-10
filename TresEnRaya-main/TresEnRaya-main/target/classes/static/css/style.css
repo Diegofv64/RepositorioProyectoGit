@@ -112,6 +112,15 @@ body {
     left:450px;
 }
 
+#countdown{
+    color:white;
+    font-size:50px;
+    position:relative;
+    right:29.5%;
+}
+#nickname{
+    color:#c515ae;
+
 .reiniciar{
     display: none;
     position: fixed;
@@ -120,5 +129,4 @@ body {
     transform: translateX(-50%);
     background-color: #c515ae;
     color: white;
-
 }

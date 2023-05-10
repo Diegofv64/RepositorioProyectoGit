@@ -110,6 +110,16 @@ body {
     bottom: 740px;
     left:450px;
 }
+
+#countdown{
+    color:white;
+    font-size:50px;
+    position:relative;
+    right:29.5%;
+}
+#nickname{
+    color:#c515ae;
+
 .reiniciar{
     display: none;
     position: fixed;
