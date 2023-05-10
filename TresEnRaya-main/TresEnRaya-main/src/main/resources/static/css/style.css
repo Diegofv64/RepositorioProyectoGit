@@ -129,3 +129,20 @@ body {
     background-color: #c515ae;
     color: white;
 }
+
+
+#draw-message{
+    display: none;
+    position: fixed;
+    padding: 10px;
+    border-radius: 10px;
+    bottom: 0;
+    left: 30%;
+    transform: "translateX(-50%)";
+    color: #c515ae;
+    font-size: 2em;
+    margin: 0;
+    background-color: #FFC0CB;
+
+}
+
