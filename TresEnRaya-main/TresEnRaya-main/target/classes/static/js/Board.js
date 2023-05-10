@@ -174,7 +174,9 @@ class Board {
     
 
     doDraw() {
-    	alert("Empate!");
+    	let drawMessage = document.getElementById("draw-message");
+        drawMessage.innerText = "¡Kachaw! los dos sois malísimos ¡Hay que mejorar!";
+        drawMessage.style.display = "block";
         this.lowlightCells();
     }
 
