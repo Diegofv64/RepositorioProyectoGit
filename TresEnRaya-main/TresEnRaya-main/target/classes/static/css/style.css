@@ -105,10 +105,11 @@ body {
     background-color:  #c515ae;
 }
 #IMAGEN{
-    position:relative;
+    position:absolute;
     display: none;
-    bottom: 740px;
-    left:450px;
+    scroll-margin:unset;
+    left:200px;
+    bottom: 40px;
 }
 
 #countdown{
