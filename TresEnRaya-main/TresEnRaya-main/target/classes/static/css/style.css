@@ -101,7 +101,6 @@ body {
     border-bottom: 4px solid #F286A0;
 }
 
-
 #startBtn {
     background-color:  #c515ae;
 }
@@ -120,7 +119,7 @@ body {
 }
 #nickname{
     color:#c515ae;
-
+}
 .reiniciar{
     display: none;
     position: fixed;
@@ -129,8 +128,8 @@ body {
     transform: translateX(-50%);
     background-color: #c515ae;
     color: white;
-
 }
+
 
 #draw-message{
     display: none;
@@ -145,5 +144,17 @@ body {
     margin: 0;
     background-color: #FFC0CB;
 
-
 }
+
+#miBoton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+  }
+  
+  #altavozImg {
+    width: 50px;
+    height: 50px;
+  }

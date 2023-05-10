@@ -154,7 +154,7 @@ class Board {
         if (winner === "tie") {
             p.textContent = "¡Kachaw! Los dos sois malísimos ¡Hay que mejorar!";
         } else {
-            p.textContent = "¡Kachaw! " + winner + " le ha dado tremenda paliza a " + looser ;
+            p.textContent = "¡Kachaw! " + winner + "  ha HUMILLADO a " + looser + "." + " Esperemos que te recuperes de tal paliza " + looser ;
         }
     
         // Agregar estilos al elemento de párrafo
