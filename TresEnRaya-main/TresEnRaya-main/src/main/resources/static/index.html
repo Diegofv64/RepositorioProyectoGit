@@ -18,7 +18,11 @@
 					<span id="p1Score"></span>
 				</h1>
 			</div>
+
+				<button onclick="PlayAudio()">Musicota</button>
+
 			<label id="countdown"></label>
+
 			<div class="col-sm-3 scoreBoard">
 				<h1 class="text-right">
 					<span id="p2Score"></span>
@@ -53,6 +57,15 @@
 	<script src="/js/Board.js"></script>
 	<script src="/js/app.js"></script>
 
+	<audio loop id= "musica">
+		<source src="song.mp3" type="audio/mpeg">
+	</audio> 
+	
+	<script>	
+		function PlayAudio(){
+			document.getElementById("musica").play();
+		}
+	</script>
 
 </body>
 </html>
