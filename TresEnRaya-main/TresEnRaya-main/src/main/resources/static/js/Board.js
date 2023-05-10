@@ -241,7 +241,7 @@ function secondPassed() {
   } 
   document.getElementById('countdown').innerHTML = minutes + ":" +     remainingSeconds;  
   seconds++;
-  var countFinish = setTimeout(reset, 120000);
+  var countFinish = setTimeout(reset, 6000);
 }
 var countdownTimer = setInterval(secondPassed, 1000);
 function reset(){
