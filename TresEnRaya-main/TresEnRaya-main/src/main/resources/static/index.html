@@ -19,7 +19,9 @@
 				</h1>
 			</div>
 
-				<button onclick="PlayAudio()">Musicota</button>
+			<button type="button" onclick="ToggleImage()" style="background: none; border: none;">
+				<img id="altavozImg" src="sonido.png" alt="Altavoz" style="width: 50px; height: 50px;">
+			  </button>
 
 			<label id="countdown"></label>
 
@@ -63,8 +65,9 @@
 	
 	<script>	
 		function PlayAudio(){
-			document.getElementById("musica").play();
-		}
+			var audio = document.getElementById("musica");
+      audio.play();
+    }
 	</script>
 
 </body>
