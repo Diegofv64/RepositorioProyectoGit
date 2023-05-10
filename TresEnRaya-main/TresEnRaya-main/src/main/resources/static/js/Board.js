@@ -117,9 +117,20 @@ class Board {
 
     doMark(cellId, label) {
         let cell = this.cells[cellId];
-        cell.textContent = label;
-        cell.classList.add('notActive');
 
+        cell.classList.add('notActive');
+        cell.setAttribute('marked', 'true');
+
+    
+        if (label == 'X') {
+            cell.style.backgroundImage = "url('/js/croissant.png')";
+            
+        } 
+        if (label == 'O') {
+            cell.style.backgroundImage = "url('/js/donuts.png')";
+           
+        }
+        
     }
 
     doWinner(winner, pos) {
@@ -163,7 +174,9 @@ class Board {
     
 
     doDraw() {
-    	alert("Empate!");
+    	let drawMessage = document.getElementById("draw-message");
+        drawMessage.innerText = "¡Kachaw! los dos sois malísimos ¡Hay que mejorar!";
+        drawMessage.style.display = "block";
         this.lowlightCells();
     }
 
@@ -216,4 +229,25 @@ class Board {
         }    	
     }
     
+}
+var seconds = 0; //número de segundos a contar
+function secondPassed() {
+
+  var minutes = Math.round((seconds - 30)/60); //calcula el número de minutos
+  var remainingSeconds = seconds % 60; //calcula los segundos
+  //si los segundos usan sólo un dígito, añadimos un cero a la izq
+  if (remainingSeconds < 10) { 
+    remainingSeconds = "0" + remainingSeconds; 
+  } 
+  document.getElementById('countdown').innerHTML = minutes + ":" +     remainingSeconds;  
+  seconds++;
+  var countFinish = setTimeout(reset, 120000);
+}
+var countdownTimer = setInterval(secondPassed, 1000);
+function reset(){
+    let img = document.getElementById("IMAGEN");
+    img.style.display= "block";
+}
+function borrarAlerta(){
+    clearTimeout(secondPassed);
 }

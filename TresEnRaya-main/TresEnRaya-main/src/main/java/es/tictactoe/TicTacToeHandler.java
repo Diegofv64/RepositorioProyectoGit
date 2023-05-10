@@ -17,110 +17,110 @@ import es.tictactoe.TicTacToeGame.EventType;
 
 public class TicTacToeHandler extends TextWebSocketHandler {
 
-	enum ClientToServerAction {
-		JOIN_GAME, MARK, RESTART
-	}
+    enum ClientToServerAction {
+        JOIN_GAME, MARK, RESTART
+    }
 
-	static class ServerToClientMsg {
-		EventType action;
-		Object data;
-	}
+    static class ServerToClientMsg {
+        EventType action;
+        Object data;
+    }
 
-	static class ClientToServerMsg {
-		ClientToServerAction action;
-		Data data;
-	}
+    static class ClientToServerMsg {
+        ClientToServerAction action;
+        Data data;
+    }
 
-	static class Data {
-		int playerId;
-		int cellId;
-		String name;
-	}
+    static class Data {
+        int playerId;
+        int cellId;
+        String name;
+    }
 
-	private ObjectMapper json = new ObjectMapper().setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+    private ObjectMapper json = new ObjectMapper().setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 
-	private TicTacToeGame game;
-	private ConcurrentMap<WebSocketSession, Connection> connections = new ConcurrentHashMap<>();
+    private TicTacToeGame game;
+    private ConcurrentMap<WebSocketSession, Connection> connections = new ConcurrentHashMap<>();
 
-	public TicTacToeHandler() {
-		newGame();
-	}
+    public TicTacToeHandler() {
+        newGame();
+    }
 
-	private void newGame() {
-		game = new TicTacToeGame();
-	}
+    private void newGame() {
+        game = new TicTacToeGame();
+    }
 
-	@Override
-	public synchronized void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		if (this.connections.size() < 2) {
-			Connection connection = new Connection(json, session);
-			this.connections.put(session, connection);
-			this.game.addConnection(connection);
-		} else {
-			System.err.println(
-					"Error: Trying to connect more than 2 players at the same time. Rejecting incoming client");
-			session.close();
-		}
-	}
+    @Override
+    public synchronized void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        if (this.connections.size() < 2) {
+            Connection connection = new Connection(json, session);
+            this.connections.put(session, connection);
+            this.game.addConnection(connection);
+        } else {
+            System.err.println(
+                    "Error: Trying to connect more than 2 players at the same time. Rejecting incoming client");
+            session.close();
+        }
+    }
 
-	@Override
-	public synchronized void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		this.connections.remove(session);
-		
-		if (!this.connections.isEmpty()) {
-			Event reconnectEvent = new Event();
-			reconnectEvent.type = EventType.RECONNECT;
-			this.connections.values().iterator().next().sendEvent(reconnectEvent);
-		}
+    @Override
+    public synchronized void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        this.connections.remove(session);
+        
+        if (!this.connections.isEmpty()) {
+            Event reconnectEvent = new Event();
+            reconnectEvent.type = EventType.RECONNECT;
+            this.connections.values().iterator().next().sendEvent(reconnectEvent);
+        }
 
-		this.newGame();
-	}
+        this.newGame();
+    }
 
-	@Override
-	public synchronized void handleTextMessage(WebSocketSession session, TextMessage wsMsg) throws Exception {
+    @Override
+    public synchronized void handleTextMessage(WebSocketSession session, TextMessage wsMsg) throws Exception {
 
-		String jsonMsg = wsMsg.getPayload();
+        String jsonMsg = wsMsg.getPayload();
 
-		System.out.println("Received message '" + jsonMsg + "' from client " + session.getId());
+        System.out.println("Received message '" + jsonMsg + "' from client " + session.getId());
 
-		ClientToServerMsg msg;
+        ClientToServerMsg msg;
 
-		try {
-			msg = json.readValue(jsonMsg, ClientToServerMsg.class);
-		} catch (Exception e) {
-			showError(jsonMsg, e);
-			return;
-		}
+        try {
+            msg = json.readValue(jsonMsg, ClientToServerMsg.class);
+        } catch (Exception e) {
+            showError(jsonMsg, e);
+            return;
+        }
 
-		try {
+        try {
 
-			switch (msg.action) {
+            switch (msg.action) {
 
-			case JOIN_GAME:
-				int numPlayers = game.getPlayers().size();
-				String letter = numPlayers == 0 ? "X" : "O";
-				Player player = new Player(numPlayers + 1, letter, msg.data.name);
-				game.addPlayer(player);
-				break;
+            case JOIN_GAME:
+                int numPlayers = game.getPlayers().size();
+                String letter = numPlayers == 0 ? "X" : "O";
+                Player player = new Player(numPlayers + 1, letter, msg.data.name);
+                game.addPlayer(player);
+                break;
 
-			case MARK:
-				if (game.checkTurn(msg.data.playerId)) {
-					game.mark(msg.data.cellId);
-				}
-				break;
+            case MARK:
+                if (game.checkTurn(msg.data.playerId)) {
+                    game.mark(msg.data.cellId);
+                }
+                break;
 
-			case RESTART:
+            case RESTART:
 
-				game.restart();
-				break;
-			}
+                game.restart();
+                break;
+            }
 
-		} catch (Exception e) {
-			showError(jsonMsg, e);
-		}
-	}
+        } catch (Exception e) {
+            showError(jsonMsg, e);
+        }
+    }
 
-	
+    
 
 	private void showError(String jsonMsg, Exception e) {
 		System.err.println("Exception processing message: " + jsonMsg);
